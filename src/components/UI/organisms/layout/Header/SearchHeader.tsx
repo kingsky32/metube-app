@@ -20,7 +20,7 @@ const Wrapper = styled.View`
 
 const Container = styled.View`
   flex-flow: row nowrap;
-  height: 48px;
+  height: 45px;
   align-items: center;
   justify-content: space-between;
 `;
