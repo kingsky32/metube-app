@@ -49,6 +49,7 @@ module.exports = {
     'react-native/split-platform-components': 0,
     'no-throw-literal': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-empty-interface': 0,
   },
   settings: {
     'import/resolver': 'babel-plugin-root-import',

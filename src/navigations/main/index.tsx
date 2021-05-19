@@ -8,8 +8,10 @@ import Explore from '#pages/explore';
 import Subscriptions from '#pages/subscriptions';
 import Library from '#pages/library';
 import MainHeader from '#components/UI/organisms/layout/Header/MainHeader';
-import { defaultCardStyle } from '#styles/themes';
+import { defaultCardStyle, styles as themeStyles } from '#styles/themes';
 import IconButton from '#components/UI/atoms/Button/IconButton';
+import Notifications from '#pages/notifications';
+import AccountChannel from '#pages/account/channel';
 
 const styles = StyleSheet.create({
   centerButton: {
@@ -84,11 +86,45 @@ const MainNavigator = (): React.ReactElement => {
   return (
     <Stack.Navigator
       screenOptions={{
-        header: props => <MainHeader {...props} />,
+        headerBackTitleVisible: false,
+        headerLeftContainerStyle: { paddingLeft: themeStyles.horizontalDistance - 5 },
+        headerLeft: ({ tintColor, ...props }) => {
+          return (
+            <IconButton
+              icon={<Icon name='chevron-left' size={32} color={tintColor} />}
+              size={35}
+              {...props}
+            />
+          );
+        },
+        headerStyle: {
+          shadowOpacity: 0,
+          borderBottomColor: '#eeeeee',
+          borderBottomWidth: 1,
+        },
+        headerTitleAlign: 'left',
+        headerTitleStyle: {
+          marginLeft: -30,
+          fontWeight: '400',
+        },
         cardStyle: defaultCardStyle,
       }}
     >
-      <Stack.Screen name='tab' component={TabNavigator} />
+      <Stack.Screen
+        name='tab'
+        component={TabNavigator}
+        options={{ header: props => <MainHeader {...props} /> }}
+      />
+      <Stack.Screen
+        name='notifications'
+        component={Notifications}
+        options={{ headerShown: true, title: 'Notificaitons' }}
+      />
+      <Stack.Screen
+        name='channel'
+        component={AccountChannel}
+        options={{ headerShown: true, title: 'channel' }}
+      />
     </Stack.Navigator>
   );
 };

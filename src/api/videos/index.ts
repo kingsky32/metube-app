@@ -20,7 +20,7 @@ type ChartTypes = 'mosePopular';
 type MyRatingTypes = 'dislike' | 'like';
 
 interface VideosProps {
-  part: PartTypes | string;
+  part: Array<PartTypes> | PartTypes;
   chart?: ChartTypes | string;
   id?: string;
   myRating?: MyRatingTypes | string;
@@ -29,9 +29,15 @@ interface VideosProps {
   videoCategoryId?: string;
 }
 
-export const getVideos = async (
-  params: VideosProps
-): Promise<AxiosResponse<VideosRequestProps>> => {
+export const getVideos = async ({
+  part,
+  ...props
+}: VideosProps): Promise<AxiosResponse<VideosRequestProps>> => {
   const endpoint = '/videos';
+  const _part = Array.isArray(part) ? part.join(',') : part;
+  const params = {
+    part: _part,
+    ...props,
+  };
   return restApi.get(endpoint, { params });
 };

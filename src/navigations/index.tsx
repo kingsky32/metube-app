@@ -7,7 +7,7 @@ import { defaultCardStyle, styles } from '#styles/themes';
 import MainNavigator from './main';
 import SearchNavigator from './search';
 import AccountNavigator from './account';
-import Notifications from '#pages/notifications';
+import VideoDetail from '#pages/video/detail';
 
 const RootNavigator = (): React.ReactElement => {
   const Stack = React.useMemo(() => createStackNavigator(), []);
@@ -44,11 +44,7 @@ const RootNavigator = (): React.ReactElement => {
           component={AccountNavigator}
           options={{ headerShown: true, title: 'Account' }}
         />
-        <Stack.Screen
-          name='notifications'
-          component={Notifications}
-          options={{ headerShown: true, title: 'Notificaitons' }}
-        />
+        <Stack.Screen name='video_detail' component={VideoDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
