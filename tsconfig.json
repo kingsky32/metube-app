@@ -3,9 +3,7 @@
     /* Basic Options */
     "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
     "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
-    "lib": [
-      "es2017"
-    ] /* Specify library files to be included in the compilation. */,
+    "lib": ["es2017"] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
     // "checkJs": true,                       /* Report errors in .js files. */
     "jsx": "react-native" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
@@ -41,12 +39,16 @@
     "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
     "paths": {
       /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+      "#api/*": ["./api/*"],
       "#assets/*": ["./assets/*"],
+      "#common/*": ["./common/*"],
       "#components/*": ["./components/*"],
-      "#pages/*": ["./pages/*"],
-      "#hooks/*": ["./hooks/*"],
-      "#store/*": ["./store/*"],
       "#data/*": ["./data/*"],
+      "#hooks/*": ["./hooks/*"],
+      "#navigations/*": ["./navigations/*"],
+      "#pages/*": ["./pages/*"],
+      "#styles/*": ["./styles/*"],
+      "#utils/*": ["./utils/*"],
       "#/*": ["./*"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
@@ -67,10 +69,5 @@
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }

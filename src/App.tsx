@@ -1,11 +1,11 @@
-import Layout from '#components/templates/Layout';
 import React from 'react';
-import MainNavigator from './navigations';
+import Layout from '#components/templates/Layout';
+import RootNavigator from './navigations';
 
 const App = (): React.ReactElement => {
   return (
     <Layout>
-      <MainNavigator />
+      <RootNavigator />
     </Layout>
   );
 };

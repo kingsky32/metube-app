@@ -48,6 +48,10 @@ module.exports = api => {
               rootPathPrefix: '#pages/',
             },
             {
+              rootPathSuffix: './src/styles',
+              rootPathPrefix: '#styles/',
+            },
+            {
               rootPathSuffix: './src/utils',
               rootPathPrefix: '#utils/',
             },

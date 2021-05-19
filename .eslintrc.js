@@ -16,7 +16,7 @@ module.exports = {
     jest: true,
   },
   rules: {
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/no-extraneous-dependencies': 0,
     'react/jsx-props-no-spreading': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
@@ -38,7 +38,7 @@ module.exports = {
     'one-var': 0,
     'no-underscore-dangle': 0,
     'no-plusplus': 0,
-    'react-hooks/exhaustive-deps': 1,
+    'react-hooks/exhaustive-deps': 0,
     'import/prefer-default-export': 0,
     'no-restricted-syntax': 0,
     'no-continue': 0,
