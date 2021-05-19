@@ -5,6 +5,7 @@ platform :ios, '10.0'
 
 target 'metube' do
   config = use_native_modules!
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -12,16 +13,16 @@ target 'metube' do
     :hermes_enabled => false
   )
 
-  target 'metubeTests' do
-    inherit! :complete
-    # Pods for testing
-  end
+  # target 'metubeTests' do
+  #   inherit! :complete
+  #   # Pods for testing
+  # end
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-  use_flipper!()
+  # use_flipper!()
 
   post_install do |installer|
     react_native_post_install(installer)
