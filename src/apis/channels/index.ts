@@ -1,4 +1,7 @@
-type RelatedPlaylistsType = {
+import { AxiosResponse } from 'axios';
+import { restApi } from '../index';
+
+export type RelatedPlaylistsType = {
   likes: string;
   favorites: string;
   uploads: string;
@@ -6,7 +9,7 @@ type RelatedPlaylistsType = {
   watchLater: string;
 };
 
-type BrandingSettingsChannelType = {
+export type BrandingSettingsChannelType = {
   title: string;
   description: string;
   keywords: string;
@@ -21,23 +24,23 @@ type BrandingSettingsChannelType = {
   profileColor: string;
 };
 
-type WatchType = {
+export type WatchType = {
   textColor: string;
   backgroundColor: string;
   featuredPlaylistId: string;
 };
 
-type HintType = {
+export type HintType = {
   property: string;
   value: string;
 };
 
-type LocalizedType = {
+export type LocalizedType = {
   value: string;
   language: string;
 };
 
-type BrandingSettingsType = {
+export type BrandingSettingsType = {
   channel: BrandingSettingsChannelType;
   watch: WatchType;
   image: {
@@ -79,7 +82,7 @@ type BrandingSettingsType = {
   hints: Array<HintType>;
 };
 
-type InvideoPromotionItemType = {
+export type InvideoPromotionItemType = {
   id: {
     type: string;
     videoId: string;
@@ -93,7 +96,7 @@ type InvideoPromotionItemType = {
   customMessage: string;
 };
 
-type InvideoPromotionType = {
+export type InvideoPromotionType = {
   defaultTiming: {
     type: string;
     offsetMs: number;
@@ -106,7 +109,7 @@ type InvideoPromotionType = {
   items: Array<InvideoPromotionItemType>;
 };
 
-type ChannelType = {
+export type ChannelType = {
   kind: string;
   etag: string;
   id: string;
@@ -133,4 +136,39 @@ type ChannelType = {
   invideoPromotion: InvideoPromotionType;
 };
 
-interface ChannelsRequestProps extends ListRequestProps<ChannelType> {}
+export interface ChannelsRequestProps extends ListRequestProps<ChannelType> {}
+
+export type PartTypes =
+  | 'id'
+  | 'snippet'
+  | 'brandingSettings'
+  | 'contentDetails'
+  | 'invideoPromotion'
+  | 'statistics'
+  | 'topicDetails';
+
+export interface VideosProps {
+  part: Array<PartTypes> | PartTypes;
+  categoryId?: string;
+  forUsername?: string;
+  id?: string | number;
+  managedByMe?: string;
+  mine?: string;
+  mySubscribers?: string;
+  maxResults?: number;
+  onBehalfOfContentOwner?: string;
+  pageToken?: string;
+}
+
+export const getChannels = async ({
+  part,
+  ...props
+}: VideosProps): Promise<AxiosResponse<ChannelsRequestProps>> => {
+  const endpoint = '/channels';
+  const _part = Array.isArray(part) ? part.join(',') : part;
+  const params = {
+    part: _part,
+    ...props,
+  };
+  return restApi.get(endpoint, { params });
+};

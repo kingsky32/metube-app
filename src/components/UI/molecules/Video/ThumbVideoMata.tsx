@@ -6,7 +6,7 @@ import IconButton from '#components/UI/atoms/Button/IconButton';
 import nFormatter from '#utils/nFormatter';
 import getTimeAgo from '#utils/getTimeAgo';
 import useAxios, { AxiosType } from '#hooks/useAxios';
-import { getChannels } from '#api/channels';
+import { ChannelsRequestProps, getChannels } from '#apis/channels';
 import Loading from '#components/UI/atoms/Loading';
 
 interface ThumbVideoMataProps {

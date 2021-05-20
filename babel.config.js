@@ -16,8 +16,8 @@ module.exports = api => {
         {
           paths: [
             {
-              rootPathSuffix: './src/api',
-              rootPathPrefix: '#api/',
+              rootPathSuffix: './src/apis',
+              rootPathPrefix: '#apis/',
             },
             {
               rootPathSuffix: './src/assets',

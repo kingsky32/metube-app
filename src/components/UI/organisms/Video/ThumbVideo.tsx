@@ -3,6 +3,7 @@ import { ViewProps } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import ThumbVideoMata from '#components/UI/molecules/Video/ThumbVideoMata';
+import { VideoType } from '#apis/videos';
 
 interface ThumbVideoProps extends VideoType {
   containerStyle?: ViewProps | any;

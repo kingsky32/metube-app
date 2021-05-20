@@ -1,10 +1,10 @@
-type ThumbnailType = {
+declare type ThumbnailType = {
   url: string;
   width: number;
   height: number;
 };
 
-type ThumbnailsType = {
+declare type ThumbnailsType = {
   default: ThumbnailType;
   high: ThumbnailType;
   maxres: ThumbnailType;
@@ -12,7 +12,7 @@ type ThumbnailsType = {
   standard: ThumbnailType;
 };
 
-type SnippetType = {
+declare type SnippetType = {
   publishedAt: Date;
   channelId: string;
   title: string;
@@ -23,12 +23,12 @@ type SnippetType = {
   categoryId: string;
 };
 
-type PageInfoType = {
+declare type PageInfoType = {
   resultsPerPage: number;
   totalResults: number;
 };
 
-interface ListRequestProps<T> {
+declare interface ListRequestProps<T> {
   kind: string;
   etag: string;
   nextPageToken: string;

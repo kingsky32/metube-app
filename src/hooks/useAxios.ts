@@ -1,13 +1,14 @@
 import React from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
 
-type LoadDataType = Promise<AxiosResponse<any> | AxiosResponse<any> | undefined>;
+export type LoadDataType<T = any> = Promise<AxiosResponse<T> | undefined>;
 
 export type AxiosType<T = any> = {
   data: T | null;
   error: null | AxiosError;
   loading: boolean;
-  loadData: (axios: Promise<AxiosResponse>) => LoadDataType;
+  loadData: (axios: Promise<AxiosResponse>) => LoadDataType<T>;
+  clear: () => void;
 };
 
 type ResponseType = AxiosResponse | any;
@@ -34,7 +35,11 @@ const useAxios = (): AxiosType => {
     return undefined;
   };
 
-  return { ...state, loadData };
+  const clear = () => {
+    setState({ data: null, error: null, loading: false });
+  };
+
+  return { ...state, loadData, clear };
 };
 
 export default useAxios;
