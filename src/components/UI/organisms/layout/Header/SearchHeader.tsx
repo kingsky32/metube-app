@@ -4,8 +4,14 @@ import styled from 'styled-components/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TextInput } from 'react-native';
+import { Scene } from '@react-navigation/stack/lib/typescript/src/types';
 import IconButton from '#components/UI/atoms/Button/IconButton';
 import Input from '#components/UI/atoms/Input';
+import { SearchRouteProp } from '#navigations/search';
+
+export interface SearchHeaderProps extends StackHeaderProps {
+  scene: Scene<SearchRouteProp>;
+}
 
 const SearchInput = styled(Input)`
   flex: 1;
@@ -25,14 +31,23 @@ const Container = styled.View`
   justify-content: space-between;
 `;
 
-const SearchHeader = ({ navigation }: StackHeaderProps): React.ReactElement => {
+const SearchHeader = ({ navigation, scene }: SearchHeaderProps): React.ReactElement => {
   const insets = useSafeAreaInsets();
   const inputRef = React.useRef<TextInput>(null);
-  const [keyword, setKeyword] = React.useState('');
+  const { params } = scene.route;
+  const initialKeyword: string = params?.keyword;
+  const [keyword, setKeyword] = React.useState<string>(initialKeyword ?? '');
+  const isSearch = scene.route.name === 'Search';
+
+  const handleSubmit = () => {
+    navigation.push('SearchResult', { keyword });
+  };
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      inputRef.current?.focus();
+      if (isSearch) {
+        inputRef.current?.focus();
+      }
     });
     return unsubscribe;
   }, []);
@@ -40,13 +55,18 @@ const SearchHeader = ({ navigation }: StackHeaderProps): React.ReactElement => {
   return (
     <Wrapper style={{ paddingTop: insets.top }}>
       <Container>
-        <IconButton icon={<Icon name='close' size={24} />} size={34} onPress={navigation.goBack} />
+        <IconButton
+          icon={<Icon name={isSearch ? 'close' : 'chevron-left'} size={24} />}
+          size={34}
+          onPress={navigation.goBack}
+        />
         <SearchInput
           ref={inputRef}
           placeholder='Search MeTube'
           returnKeyType='search'
           value={keyword}
           onChangeText={setKeyword}
+          onSubmitEditing={handleSubmit}
         />
         <IconButton icon={<Icon name='mic-none' size={24} />} size={34} />
       </Container>

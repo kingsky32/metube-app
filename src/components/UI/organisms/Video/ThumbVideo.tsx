@@ -31,7 +31,7 @@ const ThumbVideo = ({
   const { viewCount } = statistics;
 
   const handlePress = () => {
-    navigation.navigate('video_detail', { id });
+    navigation.navigate('VideoDetail', { id });
   };
 
   return (

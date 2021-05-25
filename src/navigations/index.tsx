@@ -1,6 +1,6 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconButton from '#components/UI/atoms/Button/IconButton';
 import { defaultCardStyle, styles } from '#styles/themes';
@@ -37,14 +37,14 @@ const RootNavigator = (): React.ReactElement => {
           cardStyle: defaultCardStyle,
         }}
       >
-        <Stack.Screen name='main' component={MainNavigator} />
-        <Stack.Screen name='search' component={SearchNavigator} />
+        <Stack.Screen name='Main' component={MainNavigator} />
+        <Stack.Screen name='Search' component={SearchNavigator} />
         <Stack.Screen
           name='account'
           component={AccountNavigator}
           options={{ headerShown: true, title: 'Account' }}
         />
-        <Stack.Screen name='video_detail' component={VideoDetail} />
+        <Stack.Screen name='VideoDetail' component={VideoDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

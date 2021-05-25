@@ -47,18 +47,18 @@ const MainHeader = ({ navigation }: StackHeaderProps): React.ReactElement => {
             icon={<Icon name='notifications-none' size={24} />}
             style={styles.buttonDistance}
             size={34}
-            onPress={() => navigation.navigate('notifications')}
+            onPress={() => navigation.navigate('Notifications')}
           />
           <IconButton
             icon={<Icon name='search' size={24} />}
             style={styles.buttonDistance}
             size={34}
-            onPress={() => navigation.navigate('search')}
+            onPress={() => navigation.navigate('Search')}
           />
           <IconButton
             icon={<Icon name='account-circle' size={24} />}
             size={34}
-            onPress={() => navigation.navigate('account')}
+            onPress={() => navigation.navigate('Account')}
           />
         </ButtonContainer>
       </Container>

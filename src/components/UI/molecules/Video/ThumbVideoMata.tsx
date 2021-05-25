@@ -67,7 +67,7 @@ const ThumbVideoMata = ({
   const { snippet } = channel ?? {};
   const { thumbnails } = snippet ?? {};
   const handlePress = () => {
-    navigation.navigate('channel', { id: channelId });
+    navigation.navigate('Channel', { id: channelId });
   };
 
   React.useEffect(() => {

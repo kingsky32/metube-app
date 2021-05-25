@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { RouteProp } from '@react-navigation/native';
 import Home from '#pages/home';
 import Explore from '#pages/explore';
 import Subscriptions from '#pages/subscriptions';
@@ -12,6 +13,22 @@ import { defaultCardStyle, styles as themeStyles } from '#styles/themes';
 import IconButton from '#components/UI/atoms/Button/IconButton';
 import Notifications from '#pages/notifications';
 import AccountChannel from '#pages/account/channel';
+
+export type MainTabParamList = {
+  Home: undefined;
+  Explore: undefined;
+  Subscriptions: undefined;
+  Library: undefined;
+};
+
+export type MainTabRouteProp = RouteProp<MainTabParamList, 'Home'>;
+
+export type MainTabNavigationProp = StackNavigationProp<MainTabParamList, 'Home'>;
+
+export type MainTabTNavigatorProps = {
+  route: MainTabRouteProp;
+  navigation: MainTabNavigationProp;
+};
 
 const styles = StyleSheet.create({
   centerButton: {
@@ -30,7 +47,7 @@ const TabNavigator = (): React.ReactElement => {
       sceneContainerStyle={defaultCardStyle}
     >
       <Tab.Screen
-        name='home'
+        name='Home'
         component={Home}
         options={{
           title: 'Home',
@@ -38,7 +55,7 @@ const TabNavigator = (): React.ReactElement => {
         }}
       />
       <Tab.Screen
-        name='explore'
+        name='Explore'
         component={Explore}
         options={{
           title: 'Explore',
@@ -46,7 +63,7 @@ const TabNavigator = (): React.ReactElement => {
         }}
       />
       <Tab.Screen
-        name='button'
+        name='Button'
         component={Home}
         options={{
           tabBarButton: ({ style }) => {
@@ -62,7 +79,7 @@ const TabNavigator = (): React.ReactElement => {
         }}
       />
       <Tab.Screen
-        name='subscriptions'
+        name='Subscriptions'
         component={Subscriptions}
         options={{
           title: 'Subscriptions',
@@ -70,7 +87,7 @@ const TabNavigator = (): React.ReactElement => {
         }}
       />
       <Tab.Screen
-        name='library'
+        name='Library'
         component={Library}
         options={{
           title: 'Library',
@@ -111,19 +128,19 @@ const MainNavigator = (): React.ReactElement => {
       }}
     >
       <Stack.Screen
-        name='tab'
+        name='Tab'
         component={TabNavigator}
         options={{ header: props => <MainHeader {...props} /> }}
       />
       <Stack.Screen
-        name='notifications'
+        name='Notifications'
         component={Notifications}
         options={{ headerShown: true, title: 'Notificaitons' }}
       />
       <Stack.Screen
-        name='channel'
+        name='Channel'
         component={AccountChannel}
-        options={{ headerShown: true, title: 'channel' }}
+        options={{ headerShown: true, title: 'Channel' }}
       />
     </Stack.Navigator>
   );
