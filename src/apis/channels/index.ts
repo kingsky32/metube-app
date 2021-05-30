@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { restApi } from '../index';
+import { ApiType, ListRequestProps, SnippetType } from '#apis/apis';
 
-export type RelatedPlaylistsType = {
+type RelatedPlaylistsType = {
   likes: string;
   favorites: string;
   uploads: string;
@@ -9,7 +9,7 @@ export type RelatedPlaylistsType = {
   watchLater: string;
 };
 
-export type BrandingSettingsChannelType = {
+type BrandingSettingsChannelType = {
   title: string;
   description: string;
   keywords: string;
@@ -24,23 +24,23 @@ export type BrandingSettingsChannelType = {
   profileColor: string;
 };
 
-export type WatchType = {
+type WatchType = {
   textColor: string;
   backgroundColor: string;
   featuredPlaylistId: string;
 };
 
-export type HintType = {
+type HintType = {
   property: string;
   value: string;
 };
 
-export type LocalizedType = {
+type LocalizedType = {
   value: string;
   language: string;
 };
 
-export type BrandingSettingsType = {
+type BrandingSettingsType = {
   channel: BrandingSettingsChannelType;
   watch: WatchType;
   image: {
@@ -82,7 +82,7 @@ export type BrandingSettingsType = {
   hints: Array<HintType>;
 };
 
-export type InvideoPromotionItemType = {
+type InvideoPromotionItemType = {
   id: {
     type: string;
     videoId: string;
@@ -96,7 +96,7 @@ export type InvideoPromotionItemType = {
   customMessage: string;
 };
 
-export type InvideoPromotionType = {
+type InvideoPromotionType = {
   defaultTiming: {
     type: string;
     offsetMs: number;
@@ -109,7 +109,7 @@ export type InvideoPromotionType = {
   items: Array<InvideoPromotionItemType>;
 };
 
-export type ChannelType = {
+type ChannelItemProps = {
   kind: string;
   etag: string;
   id: string;
@@ -136,9 +136,9 @@ export type ChannelType = {
   invideoPromotion: InvideoPromotionType;
 };
 
-export interface ChannelsRequestProps extends ListRequestProps<ChannelType> {}
+export interface ChannelsRequestItemProps extends ListRequestProps<ChannelItemProps> {}
 
-export type PartTypes =
+type PartTypes =
   | 'id'
   | 'snippet'
   | 'brandingSettings'
@@ -163,7 +163,7 @@ export interface VideosProps {
 export const getChannels = async ({
   part,
   ...props
-}: VideosProps): Promise<AxiosResponse<ChannelsRequestProps>> => {
+}: VideosProps): ApiType<ChannelsRequestItemProps> => {
   const endpoint = '/channels';
   const _part = Array.isArray(part) ? part.join(',') : part;
   const params = {

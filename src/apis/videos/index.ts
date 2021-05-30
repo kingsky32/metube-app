@@ -1,12 +1,12 @@
-import { AxiosResponse } from 'axios';
 import { restApi } from '../index';
+import { ApiType, ListRequestProps, SnippetType } from '#apis/apis';
 
-export type RegionRestrictionType = {
+type RegionRestrictionType = {
   allowed: Array<string>;
   blocked: Array<string>;
 };
 
-export type ContentRatingType = {
+type ContentRatingType = {
   mpaaRating: string;
   tvpgRating: string;
   bbfcRating: string;
@@ -25,23 +25,23 @@ export type ContentRatingType = {
   ytRating: string;
 };
 
-export type PlayerType = {
+type PlayerType = {
   embedHtml: string;
 };
 
-export type LocationType = {
+type LocationType = {
   latitude: number;
   longitude: number;
   altitude: number;
 };
 
-export type RecordingDetailsType = {
+type RecordingDetailsType = {
   locationDescription: string;
   location: LocationType;
   recordingDate: Date;
 };
 
-export type VideoStreamsType = {
+type VideoStreamsType = {
   widthPixels: number;
   heightPixels: number;
   frameRateFps: number;
@@ -52,20 +52,20 @@ export type VideoStreamsType = {
   vendor: string;
 };
 
-export type AudioStreamType = {
+type AudioStreamType = {
   channelCount: number;
   codec: string;
   bitrateBps: number;
   vendor: string;
 };
 
-export type RecordingLocationType = {
+type RecordingLocationType = {
   latitude: number;
   longitude: number;
   altitude: number;
 };
 
-export type FileDetailsType = {
+type FileDetailsType = {
   fileName: string;
   fileSize: number;
   fileType: string;
@@ -78,13 +78,13 @@ export type FileDetailsType = {
   creationTime: string;
 };
 
-export type ProcessingProgressType = {
+type ProcessingProgressType = {
   partsTotal: number;
   partsProcessed: number;
   timeLeftMs: number;
 };
 
-export type ProcessingDetailsType = {
+type ProcessingDetailsType = {
   processingStatus: string;
   processingProgress: ProcessingProgressType;
   processingFailureReason: string;
@@ -95,12 +95,12 @@ export type ProcessingDetailsType = {
   thumbnailsAvailability: string;
 };
 
-export type TagSuggestionType = {
+type TagSuggestionType = {
   tag: string;
   categoryRestricts: Array<string>;
 };
 
-export type SuggestionsType = {
+type SuggestionsType = {
   processingErrors: Array<string>;
   processingWarnings: Array<string>;
   processingHints: Array<string>;
@@ -108,7 +108,7 @@ export type SuggestionsType = {
   editorSuggestions: Array<string>;
 };
 
-export type VideoType = {
+export type VideoItemProps = {
   kind: string;
   etag: string;
   id: string;
@@ -149,9 +149,9 @@ export type VideoType = {
   suggestions: SuggestionsType;
 };
 
-export interface VideosRequestProps extends ListRequestProps<VideoType> {}
+export interface VideosRequestProps extends ListRequestProps<VideoItemProps> {}
 
-export type PartTypes =
+type PartTypes =
   | 'id'
   | 'snippet'
   | 'contentDetails'
@@ -165,9 +165,9 @@ export type PartTypes =
   | 'suggestions'
   | 'topicDetails';
 
-export type ChartTypes = 'mosePopular';
+type ChartTypes = 'mosePopular';
 
-export type MyRatingTypes = 'dislike' | 'like';
+type MyRatingTypes = 'dislike' | 'like';
 
 export interface VideosProps {
   part: Array<PartTypes> | PartTypes;
@@ -180,10 +180,7 @@ export interface VideosProps {
   videoCategoryId?: string;
 }
 
-export const getVideos = async ({
-  part,
-  ...props
-}: VideosProps): Promise<AxiosResponse<VideosRequestProps>> => {
+export const getVideos = async ({ part, ...props }: VideosProps): ApiType<VideosRequestProps> => {
   const endpoint = '/videos';
   const _part = Array.isArray(part) ? part.join(',') : part;
   const params = {

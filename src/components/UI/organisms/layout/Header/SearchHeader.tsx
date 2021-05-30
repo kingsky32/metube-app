@@ -1,17 +1,12 @@
 import React from 'react';
+import { TextInput } from 'react-native';
 import { StackHeaderProps } from '@react-navigation/stack';
 import styled from 'styled-components/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { TextInput } from 'react-native';
-import { Scene } from '@react-navigation/stack/lib/typescript/src/types';
+import { RouteProp } from '@react-navigation/native';
 import IconButton from '#components/UI/atoms/Button/IconButton';
 import Input from '#components/UI/atoms/Input';
-import { SearchRouteProp } from '#navigations/search';
-
-export interface SearchHeaderProps extends StackHeaderProps {
-  scene: Scene<SearchRouteProp>;
-}
 
 const SearchInput = styled(Input)`
   flex: 1;
@@ -31,16 +26,16 @@ const Container = styled.View`
   justify-content: space-between;
 `;
 
-const SearchHeader = ({ navigation, scene }: SearchHeaderProps): React.ReactElement => {
+const SearchHeader = ({ navigation, scene }: StackHeaderProps): React.ReactElement => {
   const insets = useSafeAreaInsets();
   const inputRef = React.useRef<TextInput>(null);
-  const { params } = scene.route;
-  const initialKeyword: string = params?.keyword;
-  const [keyword, setKeyword] = React.useState<string>(initialKeyword ?? '');
+  const { params } = scene.route as RouteProp<{ params: { query: string } }, 'params'>;
+  const initialQuery: string = params?.query;
+  const [query, setQuery] = React.useState<string>(initialQuery ?? '');
   const isSearch = scene.route.name === 'Search';
 
   const handleSubmit = () => {
-    navigation.push('SearchResult', { keyword });
+    navigation.push('SearchResult', { query });
   };
 
   React.useEffect(() => {
@@ -64,8 +59,8 @@ const SearchHeader = ({ navigation, scene }: SearchHeaderProps): React.ReactElem
           ref={inputRef}
           placeholder='Search MeTube'
           returnKeyType='search'
-          value={keyword}
-          onChangeText={setKeyword}
+          value={query}
+          onChangeText={setQuery}
           onSubmitEditing={handleSubmit}
         />
         <IconButton icon={<Icon name='mic-none' size={24} />} size={34} />

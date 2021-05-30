@@ -3,14 +3,12 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RouteProp } from '@react-navigation/native';
 import { defaultCardStyle } from '#styles/themes';
 import Search from '#pages/search';
-import SearchHeader, {
-  SearchHeaderProps,
-} from '#components/UI/organisms/layout/Header/SearchHeader';
+import SearchHeader from '#components/UI/organisms/layout/Header/SearchHeader';
 import SearchResult from '#pages/search/result';
 
 export type SearchParamList = {
-  Search: { keyword: string };
-  SearchResult: { keyword: string };
+  Search: { query: string };
+  SearchResult: { query: string };
 };
 
 export type SearchRouteProp = RouteProp<SearchParamList, 'Search'>;
@@ -22,12 +20,13 @@ export type SearchNavigatorProps = {
   navigation: SearchNavigationProp;
 };
 
+const Stack = createStackNavigator<SearchParamList>();
+
 const SearchNavigator = (): React.ReactElement => {
-  const Stack = React.useMemo(() => createStackNavigator<SearchParamList>(), []);
   return (
     <Stack.Navigator
       screenOptions={{
-        header: (props: SearchHeaderProps): React.ReactNode => <SearchHeader {...props} />,
+        header: props => <SearchHeader {...props} />,
         cardStyle: defaultCardStyle,
       }}
     >
