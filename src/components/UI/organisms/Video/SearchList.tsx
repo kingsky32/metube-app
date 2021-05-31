@@ -1,10 +1,10 @@
 import React from 'react';
 import { Alert, FlatList, StyleSheet } from 'react-native';
-import { VideosRequestProps, VideoItemProps } from '#apis/videos';
 import useAxios, { AxiosType, LoadDataType } from '#hooks/useAxios';
 import Loading from '#components/UI/atoms/Loading';
 import VideoListItem from '#components/UI/molecules/Video/VideoListItem';
 import { ApiType } from '#apis/apis';
+import { SearchItemProps, SearchRequestItemProps } from '#apis/search';
 
 export interface VideoListProps<T = any> {
   api: (axios: AxiosType<T>) => ApiType<T>;
@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
 });
 
 const SearchList = ({ api }: VideoListProps): React.ReactElement => {
-  const list: AxiosType<VideosRequestProps> = useAxios();
+  const list: AxiosType<SearchRequestItemProps> = useAxios();
   const [refreshing, setRefreshing] = React.useState<boolean>(false);
-  const [data, setData] = React.useState<Array<VideoItemProps>>([]);
+  const [data, setData] = React.useState<Array<SearchItemProps>>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
 
-  const loadData = (): LoadDataType<VideosRequestProps> => {
+  const loadData = (): LoadDataType<SearchRequestItemProps> => {
     return list.loadData(api(list));
   };
 
@@ -38,6 +38,7 @@ const SearchList = ({ api }: VideoListProps): React.ReactElement => {
   };
 
   const onRefresh = async () => {
+    if (list.loading) return;
     setRefreshing(true);
     setData([]);
     list.clear();
@@ -76,10 +77,13 @@ const SearchList = ({ api }: VideoListProps): React.ReactElement => {
       ListFooterComponent={() => {
         return list.loading && !refreshing ? <Loading /> : null;
       }}
+      keyExtractor={(item, index) => `${item.id.videoId}-${index}`}
       renderItem={({ item, index }) => {
         const length = list.data?.items?.length ?? 0;
         const isNotLast = index < length - 1;
-        return <VideoListItem viewCount={0} containerStyle={isNotLast && styles.videoDistance} />;
+        return (
+          <VideoListItem id={item.id.videoId} containerStyle={isNotLast && styles.videoDistance} />
+        );
       }}
     />
   );

@@ -71,6 +71,7 @@ const VideoListItemMeta = ({
   };
 
   React.useEffect(() => {
+    if (!channelId) return;
     channels.loadData(getChannels({ part: 'snippet', id: channelId }));
   }, []);
 

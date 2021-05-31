@@ -35,7 +35,11 @@ const SearchHeader = ({ navigation, scene }: StackHeaderProps): React.ReactEleme
   const isSearch = scene.route.name === 'Search';
 
   const handleSubmit = () => {
-    navigation.push('SearchResult', { query });
+    if (isSearch) {
+      navigation.replace('SearchResult', { query });
+    } else {
+      navigation.push('SearchResult', { query });
+    }
   };
 
   React.useEffect(() => {

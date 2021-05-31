@@ -38,6 +38,7 @@ const VideoList = ({ api }: VideoListProps): React.ReactElement => {
   };
 
   const onRefresh = async () => {
+    if (list.loading) return;
     setRefreshing(true);
     setData([]);
     list.clear();
@@ -76,20 +77,12 @@ const VideoList = ({ api }: VideoListProps): React.ReactElement => {
       ListFooterComponent={() => {
         return list.loading && !refreshing ? <Loading /> : null;
       }}
+      keyExtractor={(item, index) => `${item.id}-${index}`}
       renderItem={({ item, index }) => {
         const length = list.data?.items?.length ?? 0;
         const isNotLast = index < length - 1;
         return (
-          <VideoListItem
-            containerStyle={isNotLast && styles.thumbVideoDistance}
-            id={item.id}
-            title={item.snippet.title}
-            channelTitle={item.snippet.channelTitle}
-            publishedAt={item.snippet.publishedAt}
-            thumbnails={item.snippet.thumbnails.high.url}
-            channelId={item.snippet.channelId}
-            viewCount={item.statistics.viewCount}
-          />
+          <VideoListItem containerStyle={isNotLast && styles.thumbVideoDistance} id={item.id} />
         );
       }}
     />

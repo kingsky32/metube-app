@@ -5,7 +5,7 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en_US');
 
 const getTimeAgo = (date: Date | string | number): string => {
-  const _date = new Date(date);
+  const _date = new Date(date ?? null);
   return timeAgo.format(_date, 'round');
 };
 
