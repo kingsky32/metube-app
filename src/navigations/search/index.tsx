@@ -11,13 +11,16 @@ export type SearchParamList = {
   SearchResult: { query: string };
 };
 
-export type SearchRouteProp = RouteProp<SearchParamList, 'Search'>;
+export type SearchRouteProp<T extends keyof SearchParamList> = RouteProp<SearchParamList, T>;
 
-export type SearchNavigationProp = StackNavigationProp<SearchParamList, 'Search'>;
+export type SearchNavigationProp<T extends keyof SearchParamList> = StackNavigationProp<
+  SearchParamList,
+  T
+>;
 
-export type SearchNavigatorProps = {
-  route: SearchRouteProp;
-  navigation: SearchNavigationProp;
+export type SearchNavigatorProps<T extends keyof SearchParamList> = {
+  route: SearchRouteProp<T>;
+  navigation: SearchNavigationProp<T>;
 };
 
 const Stack = createStackNavigator<SearchParamList>();

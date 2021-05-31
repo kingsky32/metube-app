@@ -9,6 +9,25 @@ import SearchNavigator from './search';
 import AccountNavigator from './account';
 import VideoDetail from '#pages/video/detail';
 
+export type RootParamList = {
+  Main: undefined;
+  Search: { query: string };
+  Account: { acountId: string };
+  VideoDetail: { videoId: string };
+};
+
+export type RootRouteProp<T extends keyof RootParamList> = RouteProp<RootParamList, T>;
+
+export type RootNavigationProp<T extends keyof RootParamList> = StackNavigationProp<
+  RootParamList,
+  T
+>;
+
+export type RootNavigatorProps<T extends keyof RootParamList> = {
+  route: RootRouteProp<T>;
+  navigation: RootNavigationProp<T>;
+};
+
 const RootNavigator = (): React.ReactElement => {
   const Stack = React.useMemo(() => createStackNavigator(), []);
   return (
@@ -40,7 +59,7 @@ const RootNavigator = (): React.ReactElement => {
         <Stack.Screen name='Main' component={MainNavigator} />
         <Stack.Screen name='Search' component={SearchNavigator} />
         <Stack.Screen
-          name='account'
+          name='Account'
           component={AccountNavigator}
           options={{ headerShown: true, title: 'Account' }}
         />

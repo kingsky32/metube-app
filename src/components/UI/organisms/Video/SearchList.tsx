@@ -82,7 +82,10 @@ const SearchList = ({ api }: VideoListProps): React.ReactElement => {
         const length = list.data?.items?.length ?? 0;
         const isNotLast = index < length - 1;
         return (
-          <VideoListItem id={item.id.videoId} containerStyle={isNotLast && styles.videoDistance} />
+          <VideoListItem
+            videoId={item.id.videoId}
+            containerStyle={isNotLast && styles.videoDistance}
+          />
         );
       }}
     />

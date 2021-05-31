@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* metubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* metubeTests.m */; };
-		08DFE8DE923BE4285A8C0370 /* libPods-metube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3744452470CB1E47876F10 /* libPods-metube.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9CF84C183246F756C16FD1F8 /* libPods-metube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285DB5B839A02A40A28B7318 /* libPods-metube.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +35,10 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = metube/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = metube/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = metube/main.m; sourceTree = "<group>"; };
+		2027D9537E3F87A392CB915E /* Pods-metube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-metube.debug.xcconfig"; path = "Target Support Files/Pods-metube/Pods-metube.debug.xcconfig"; sourceTree = "<group>"; };
+		285DB5B839A02A40A28B7318 /* libPods-metube.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-metube.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = metube/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89B323F4973AF47E9EAB4EA7 /* Pods-metube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-metube.release.xcconfig"; path = "Target Support Files/Pods-metube/Pods-metube.release.xcconfig"; sourceTree = "<group>"; };
-		B6794B3DB3A4CF742C84F627 /* Pods-metube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-metube.debug.xcconfig"; path = "Target Support Files/Pods-metube/Pods-metube.debug.xcconfig"; sourceTree = "<group>"; };
-		BF3744452470CB1E47876F10 /* libPods-metube.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-metube.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B05080DE51C6E88E4846A946 /* Pods-metube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-metube.release.xcconfig"; path = "Target Support Files/Pods-metube/Pods-metube.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08DFE8DE923BE4285A8C0370 /* libPods-metube.a in Frameworks */,
+				9CF84C183246F756C16FD1F8 /* libPods-metube.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +94,8 @@
 		1D7C0270E546150E7A0DB1C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B6794B3DB3A4CF742C84F627 /* Pods-metube.debug.xcconfig */,
-				89B323F4973AF47E9EAB4EA7 /* Pods-metube.release.xcconfig */,
+				2027D9537E3F87A392CB915E /* Pods-metube.debug.xcconfig */,
+				B05080DE51C6E88E4846A946 /* Pods-metube.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				BF3744452470CB1E47876F10 /* libPods-metube.a */,
+				285DB5B839A02A40A28B7318 /* libPods-metube.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,13 +165,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "metube" */;
 			buildPhases = (
-				FA8A58CC2335BAFA03D15008 /* [CP] Check Pods Manifest.lock */,
+				A7F230D620B05721BF8867FA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				7C43AF06420B3AE98D440D8B /* [CP] Copy Pods Resources */,
+				DBCFBCA78013D7A9C230DEB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,24 +252,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		7C43AF06420B3AE98D440D8B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA8A58CC2335BAFA03D15008 /* [CP] Check Pods Manifest.lock */ = {
+		A7F230D620B05721BF8867FA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -289,6 +272,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBCFBCA78013D7A9C230DEB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-metube/Pods-metube-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -392,7 +392,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6794B3DB3A4CF742C84F627 /* Pods-metube.debug.xcconfig */;
+			baseConfigurationReference = 2027D9537E3F87A392CB915E /* Pods-metube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -419,7 +419,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89B323F4973AF47E9EAB4EA7 /* Pods-metube.release.xcconfig */;
+			baseConfigurationReference = B05080DE51C6E88E4846A946 /* Pods-metube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

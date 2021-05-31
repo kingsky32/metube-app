@@ -50,6 +50,7 @@ module.exports = {
     'no-throw-literal': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/ban-types': 0,
   },
   settings: {
     'import/resolver': 'babel-plugin-root-import',

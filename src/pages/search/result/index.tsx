@@ -3,7 +3,7 @@ import { getSearch } from '#apis/search';
 import { SearchNavigatorProps } from '#navigations/search';
 import SearchList from '#components/UI/organisms/Video/SearchList';
 
-const SearchResult = ({ route }: SearchNavigatorProps): React.ReactElement => {
+const SearchResult = ({ route }: SearchNavigatorProps<'SearchResult'>): React.ReactElement => {
   const { params } = route;
   return (
     <SearchList

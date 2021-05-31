@@ -8,7 +8,7 @@ import { getVideos, VideosRequestProps } from '#apis/videos';
 import Loading from '#components/UI/atoms/Loading';
 
 interface VideoListItemProps {
-  id: string;
+  videoId: string;
   containerStyle?: ViewProps | any;
 }
 
@@ -25,17 +25,17 @@ const ThumbImage = styled.Image`
   height: 100%;
 `;
 
-const VideoListItem = ({ id, containerStyle }: VideoListItemProps): React.ReactElement => {
+const VideoListItem = ({ videoId, containerStyle }: VideoListItemProps): React.ReactElement => {
   const navigation = useNavigation();
   const video: AxiosType<VideosRequestProps> = useAxios();
   const [videoData] = video.data?.items ?? [];
 
   const handlePress = () => {
-    navigation.navigate('VideoDetail', { id });
+    navigation.navigate('VideoDetail', { videoId });
   };
 
   React.useEffect(() => {
-    video.loadData(getVideos({ part: ['statistics', 'snippet'], id }));
+    video.loadData(getVideos({ part: ['statistics', 'snippet'], id: videoId }));
   }, []);
 
   return (

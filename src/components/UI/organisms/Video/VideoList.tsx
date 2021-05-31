@@ -82,7 +82,10 @@ const VideoList = ({ api }: VideoListProps): React.ReactElement => {
         const length = list.data?.items?.length ?? 0;
         const isNotLast = index < length - 1;
         return (
-          <VideoListItem containerStyle={isNotLast && styles.thumbVideoDistance} id={item.id} />
+          <VideoListItem
+            videoId={item.id}
+            containerStyle={isNotLast && styles.thumbVideoDistance}
+          />
         );
       }}
     />

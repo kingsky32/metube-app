@@ -21,13 +21,16 @@ export type MainTabParamList = {
   Library: undefined;
 };
 
-export type MainTabRouteProp = RouteProp<MainTabParamList, 'Home'>;
+export type MainTabRouteProp<T extends keyof MainTabParamList> = RouteProp<MainTabParamList, T>;
 
-export type MainTabNavigationProp = StackNavigationProp<MainTabParamList, 'Home'>;
+export type MainTabNavigationProp<T extends keyof MainTabParamList> = StackNavigationProp<
+  MainTabParamList,
+  T
+>;
 
-export type MainTabTNavigatorProps = {
-  route: MainTabRouteProp;
-  navigation: MainTabNavigationProp;
+export type MainTabTNavigatorProps<T extends keyof MainTabParamList> = {
+  route: MainTabRouteProp<T>;
+  navigation: MainTabNavigationProp<T>;
 };
 
 const styles = StyleSheet.create({
