@@ -10,7 +10,7 @@ const SearchResult = ({ route }: SearchNavigatorProps): React.ReactElement => {
       api={axios => {
         return getSearch({
           pageToken: axios.data?.nextPageToken,
-          part: ['snippet'],
+          part: ['id'],
           q: params.query,
         });
       }}

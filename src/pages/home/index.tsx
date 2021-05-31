@@ -8,7 +8,7 @@ const Home = (): React.ReactElement => {
       api={axios => {
         return getVideos({
           pageToken: axios.data?.nextPageToken,
-          part: ['id', 'snippet', 'statistics', 'status'],
+          part: ['id'],
           chart: 'mostPopular',
         });
       }}
